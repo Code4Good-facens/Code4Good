@@ -3,6 +3,7 @@ from PIL import Image
 import os
 from django.conf import settings
 from django.utils.text import slugify
+from utils import utils
 
 class Produto(models.Model):
     nome = models.CharField(max_length=255)
@@ -13,7 +14,7 @@ class Produto(models.Model):
     preco = models.FloatField()
 
     def get_preco_fromatado(self):
-        return f'R$ {self.preco:.2f}'.replace('.', ',')
+        return utils.formata_preco(self.preco)
     get_preco_fromatado.short_description = 'Preço'
 
     @staticmethod
