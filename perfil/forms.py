@@ -93,3 +93,4 @@ class UserForm(forms.ModelForm):
 
         if validation_error_msgs:
             raise(forms.ValidationError(validation_error_msgs))
+ 
