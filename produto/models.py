@@ -67,8 +67,6 @@ class Variacao(models.Model):
     produto = models.ForeignKey(Produto, on_delete=models.CASCADE)
     nome = models.CharField(max_length=50, blank=True, null=True)
     preco = models.FloatField()
-    preco_promocional = models.FloatField(default=0)
-    estoque = models.PositiveIntegerField(default=1)
 
     def __str__(self):
         return self.nome or self.produto.nome

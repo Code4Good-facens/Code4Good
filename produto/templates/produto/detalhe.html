@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% load omfilters %}
 
-{% block conteudo %}
+{% block titulo %}{{ produto.nome }} | {% endblock %}
 
+{% block conteudo %}
 <div class="row">
     <div class="col-lg">
         <div class="row no-gutters">
@@ -18,25 +19,28 @@
             <h1 class="h2">{{ produto.nome }}</h1>
             <p class="lead">{{ produto.descricao_curta }}</p>
             <p class="lead">
-                <span id="variation-preco" class="lead product-price">{{ produto.preco|formata_preco }}</span>
+                <span id="variation-preco" class="lead product-price">
+                    {{ produto.preco|formata_preco }}
+                </span>
             </p>
 
             <form action="{% url 'produto:adicionaraocarrinho' %}" id="form-add-to-cart">
                 <div class="form-group">
+                    <select id="select-variacoes" name="vid" class="form-control form-control-lg">
+                        {% for variacao in produto.variacao_set.all %}
+
+                        <option data-preco="{{ variacao.preco|formata_preco }}" value="{{ variacao.id }}">
+                            {% if variacao.nome %}
+                            {{ variacao.nome }}
+                            {% else %}
+                            {{ variacao }}
+                            {% endif %}
+                        </option>
+
+                        {% endfor %}
+                    </select>
                 </div>
-                <select id="select-variacoes" name="vid" class="form-control form-control-lg">
-                    {% for variacao in produto.variacao_set.all %}
 
-                    <option data-preco="{{ variacao.preco|formata_preco }}" value="{{ variacao.id }}">
-                        {% if variacao.nome %}
-                        {{ variacao.nome }}
-                        {% else %}
-                        {{ variacao }}
-                        {% endif %}
-                    </option>
-
-                    {% endfor %}
-                </select>
                 <div class="text-left">
                     <button type="submit" class="btn btn-primary btn-lg btn-block">
                         <i class="fa fa-shopping-cart" aria-hidden="true"></i>
@@ -59,5 +63,6 @@
         </div>
     </div>
 </div>
+
 
 {% endblock %}
