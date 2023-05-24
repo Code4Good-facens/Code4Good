@@ -50,7 +50,8 @@ body {
   line-height: 1.5;
   color: #212529;
   text-align: left;
-  background-color: #fff; }
+  background-color: #fff;
+  position: relative; }
 
 [tabindex="-1"]:focus {
   outline: 0 !important; }
@@ -390,6 +391,12 @@ mark,
   margin-left: 10%;
 }
 
+.footer{
+  position: fixed;
+    bottom:0;
+    left:0;
+}
+
 .detail{
   margin-top: 10%
 }
@@ -457,7 +464,9 @@ pre {
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
-  margin-left: auto; }
+  margin-left: auto; 
+  
+}
   @media (min-width: 576px) {
     .container {
       max-width: 540px; } }
@@ -476,7 +485,8 @@ pre {
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
-  margin-left: auto; }
+  margin-left: auto; 
+}
 
 .row {
   display: flex;
@@ -1713,7 +1723,7 @@ fieldset:disabled a.btn {
   border-color: #DAB79F; }
   .btn-primary:hover {
     color: #fff;
-    background-color: #138496;
+    background-color: #6A7562;
     border-color: #117a8b; }
   .btn-primary:focus, .btn-primary.focus {
     box-shadow: 0 0 0 0.2rem rgba(58, 176, 195, 0.5); }
