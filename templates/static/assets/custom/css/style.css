@@ -79,5 +79,13 @@ ul.errorlist li {
     text-decoration: none;
 }
 .cart-img {
-    max-width: 150px;
+    max-width: 80px;
 }
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px; 
+    overflow: hidden;}
+  

@@ -25,6 +25,8 @@ class ItemPedido(models.Model):
     pedido = models.ForeignKey(Pedido, on_delete=models.CASCADE)
     produto = models.CharField(max_length=255)
     produto_id = models.PositiveIntegerField()
+    variacao = models.CharField(max_length=255)
+    variacao_id = models.PositiveIntegerField()
     preco = models.FloatField()
     quantidade = models.PositiveIntegerField()
     imagem = models.CharField(max_length=2000)
@@ -32,15 +34,3 @@ class ItemPedido(models.Model):
     def __str__(self):
         return f'Item do {self.pedido}'
 
-"""
-        ItemPedido:
-            pedido - FK pedido
-            produto - Char
-            produto_id - Int
-            variacao - Char
-            variacao_id - Int
-            preco - Float
-            preco_promocional - Float
-            quantidade - Int
-            imagem - Char
-"""
