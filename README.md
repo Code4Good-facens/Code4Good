@@ -1,6 +1,6 @@
 # Programa de Gerenciamento de Doações para Instituições de Caridade
 ## Versão: 1.0 
-## Status do Projeto: ⚠️ Espera
+## Status do Projeto: Execuçaão
 
 ## Descrição do projeto
 
