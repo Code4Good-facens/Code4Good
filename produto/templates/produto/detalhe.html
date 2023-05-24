@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load omfilters %}
+{% load static %}
 
 {% block titulo %}{{ produto.nome }} | {% endblock %}
 
@@ -16,41 +17,44 @@
     </div>
     <div class="col-lg">
         <div class="mt-4 mt-lg-0">
-            <h1 class="h2">{{ produto.nome }}</h1>
-            <p class="lead">{{ produto.descricao_curta }}</p>
-            <p class="lead">
-                <span id="variation-preco" class="lead product-price">
-                    {{ produto.preco|formata_preco }}
-                </span>
-            </p>
+            <div class ="detail">
+                <h1 class="h2">{{ produto.nome }}</h1>
+                <p class="lead">{{ produto.descricao_curta }}</p>
 
-            <form action="{% url 'produto:adicionaraocarrinho' %}" id="form-add-to-cart">
-                <div class="form-group">
-                    <select id="select-variacoes" name="vid" class="form-control form-control-lg">
-                        {% for variacao in produto.variacao_set.all %}
+                    <div class="detail-precos">
+                        <p class="lead">
+                            <span id="variation-preco" class="lead product-price">
+                                {{ produto.preco|formata_preco }}
+                            </span>
+                        </p>
 
-                        <option data-preco="{{ variacao.preco|formata_preco }}" value="{{ variacao.id }}">
-                            {% if variacao.nome %}
-                            {{ variacao.nome }}
-                            {% else %}
-                            {{ variacao }}
-                            {% endif %}
-                        </option>
+                        <form action="{% url 'produto:adicionaraocarrinho' %}" id="form-add-to-cart">
+                            <div class="form-group">
+                                <select id="select-variacoes" name="vid" class="form-control form-control-lg">
+                                    {% for variacao in produto.variacao_set.all %}
 
-                        {% endfor %}
-                    </select>
-                </div>
+                                    <option data-preco="{{ variacao.preco|formata_preco }}" value="{{ variacao.id }}">
+                                        {% if variacao.nome %}
+                                        {{ variacao.nome }}
+                                        {% else %}
+                                        {{ variacao }}
+                                        {% endif %}
+                                    </option>
 
-                <div class="text-left">
-                    <button type="submit" class="btn btn-primary btn-lg btn-block">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                        Adicionar ao carrinho
-                    </button>
-                </div>
+                                    {% endfor %}
+                                </select>
+                            </div>
 
-            </form>
+                            <div class="text-left">
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">
+                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                    Adicionar ao carrinho
+                                </button>
+                            </div>
+                    </div>
+                </form>
 
-
+            </div>
         </div>
     </div>
 </div>
@@ -58,8 +62,10 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="mt-5 mb-5">
-            <h2 class="text-center">{{ produto.nome }}</h2>
-            {{ produto.descricao_longa|linebreaks }}
+            <div class="text-description">
+                <h2 class="text-center">{{ produto.nome }}</h2>
+                {{ produto.descricao_longa|linebreaks }}
+            </div>
         </div>
     </div>
 </div>
