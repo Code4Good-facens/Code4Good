@@ -28,7 +28,7 @@ Ainda não foram realizados testes
 
 ## Banco de Dados
 
-A princípio, usaremos o Postgres
+Sqlite3
 
 ## Linguagens, dependências e libs utilizadas
 
